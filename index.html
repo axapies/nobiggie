@@ -3,30 +3,29 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NoBiggie | Web Design Refreshes for Small Business</title>
+    <title>NoBiggie | Website Refreshes for Small Business</title>
     <meta
       name="description"
-      content="NoBiggie refreshes websites for small businesses with modern, creative layouts. Everyone deserves to be seen."
+      content="NoBiggie turns outdated small business websites into modern, mobile-friendly experiences. Everyone deserves to be seen."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Serif:ital@0;1&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,500&family=Instrument+Serif:ital@0;1&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --ink: #17130f;
-        --muted: #6f665d;
-        --paper: #f5f0e7;
-        --paper-deep: #ebe2d4;
-        --bone: #fffaf1;
-        --clay: #b96b4e;
-        --wine: #4f1f1e;
-        --olive: #5c6440;
-        --line: rgba(23, 19, 15, 0.16);
-        --soft-line: rgba(255, 250, 241, 0.2);
-        --shadow: 0 20px 60px rgba(23, 19, 15, 0.12);
+        --ink: #070707;
+        --muted: #5f5a51;
+        --paper: #fbf8ef;
+        --card: #fffdf7;
+        --line: rgba(7, 7, 7, 0.14);
+        --amber: #edae2c;
+        --amber-deep: #c88b16;
+        --cream: #f4ead8;
+        --sage: #6f7651;
+        --shadow: 0 22px 70px rgba(30, 22, 8, 0.12);
       }
 
       * {
@@ -39,15 +38,23 @@
 
       body {
         margin: 0;
-        background: var(--paper);
+        background:
+          radial-gradient(circle at 12% 0%, rgba(237, 174, 44, 0.1), transparent 28rem),
+          var(--paper);
         color: var(--ink);
         font-family: "Instrument Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
         letter-spacing: 0;
+        overflow-x: hidden;
       }
 
       a {
         color: inherit;
         text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
       }
 
       button,
@@ -57,615 +64,740 @@
         font: inherit;
       }
 
-      .site-shell {
-        overflow: hidden;
+      .page {
+        margin: 0 auto;
+        max-width: 1460px;
+        padding: 22px clamp(18px, 4vw, 58px) 44px;
       }
 
       .nav {
         align-items: center;
-        display: flex;
-        justify-content: space-between;
-        left: 0;
-        padding: 22px clamp(20px, 5vw, 72px);
-        position: absolute;
-        right: 0;
-        top: 0;
-        z-index: 10;
+        display: grid;
+        gap: 22px;
+        grid-template-columns: 1fr auto 1fr;
+        padding: 0 4px 28px;
       }
 
       .brand {
         align-items: baseline;
-        display: flex;
-        gap: 10px;
+        display: inline-flex;
+        font-size: clamp(1.75rem, 3vw, 2.55rem);
+        font-weight: 900;
+        line-height: 1;
       }
 
-      .brand-mark {
-        background: var(--bone);
-        border: 1px solid rgba(255, 250, 241, 0.38);
-        border-radius: 999px;
-        color: var(--wine);
-        display: grid;
-        font-family: "Instrument Serif", Georgia, serif;
-        font-size: 1.35rem;
-        height: 42px;
-        place-items: center;
-        width: 42px;
-      }
-
-      .brand-name {
-        color: var(--bone);
-        font-size: 0.93rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
+      .brand span {
+        color: #a97414;
       }
 
       .nav-links {
         align-items: center;
-        color: rgba(255, 250, 241, 0.82);
         display: flex;
-        gap: clamp(18px, 3vw, 34px);
-        font-size: 0.88rem;
+        gap: clamp(22px, 3vw, 46px);
+        font-size: 0.95rem;
+        font-weight: 800;
       }
 
       .nav-links a {
-        transition: color 180ms ease;
+        padding: 11px 0;
+        position: relative;
       }
 
-      .nav-links a:hover {
-        color: var(--bone);
+      .nav-links a:first-child::after {
+        background: var(--amber);
+        bottom: 0;
+        content: "";
+        height: 2px;
+        left: 0;
+        position: absolute;
+        right: 0;
       }
 
-      .nav-cta {
-        border: 1px solid rgba(255, 250, 241, 0.5);
+      .nav-action {
+        justify-self: end;
+      }
+
+      .button {
+        align-items: center;
+        border: 1px solid var(--ink);
         border-radius: 999px;
-        color: var(--bone);
-        padding: 11px 17px;
+        cursor: pointer;
+        display: inline-flex;
+        font-weight: 900;
+        gap: 12px;
+        justify-content: center;
+        min-height: 48px;
+        padding: 13px 24px;
+        transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease;
+      }
+
+      .button:hover {
+        box-shadow: 0 12px 24px rgba(7, 7, 7, 0.12);
+        transform: translateY(-2px);
+      }
+
+      .button-amber {
+        background: var(--amber);
+        border-color: var(--amber-deep);
+      }
+
+      .button-light {
+        background: rgba(255, 255, 255, 0.55);
+      }
+
+      .button-dark {
+        background: var(--ink);
+        color: var(--card);
       }
 
       .hero {
-        background: #24100e;
-        color: var(--bone);
-        isolation: isolate;
-        min-height: clamp(620px, 86svh, 820px);
-        position: relative;
-      }
-
-      .hero::before {
-        background-image: url("assets/hero-background.png");
-        background-position: center right;
-        background-size: cover;
-        content: "";
-        inset: 0;
-        position: absolute;
-        z-index: -2;
-      }
-
-      .hero::after {
-        background:
-          linear-gradient(90deg, rgba(18, 12, 10, 0.92) 0%, rgba(32, 14, 12, 0.82) 38%, rgba(32, 14, 12, 0.18) 72%),
-          linear-gradient(0deg, rgba(18, 12, 10, 0.28), rgba(18, 12, 10, 0) 42%);
-        content: "";
-        inset: 0;
-        position: absolute;
-        z-index: -1;
-      }
-
-      .hero-inner {
-        align-items: flex-end;
-        display: flex;
-        min-height: clamp(620px, 86svh, 820px);
-        padding: 112px clamp(20px, 5vw, 72px) 58px;
-        position: relative;
-        z-index: 1;
+        display: grid;
+        gap: clamp(28px, 4vw, 54px);
+        grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+        padding: 2px 4px 18px;
       }
 
       .hero-copy {
-        max-width: 660px;
+        align-self: center;
+        padding-top: clamp(18px, 4vw, 62px);
+        position: relative;
       }
 
       .eyebrow {
-        color: rgba(255, 250, 241, 0.72);
         display: block;
-        font-size: 0.78rem;
-        font-weight: 700;
-        letter-spacing: 0.16em;
-        margin-bottom: 22px;
+        font-size: 0.74rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        margin-bottom: 16px;
         text-transform: uppercase;
       }
 
       h1,
       h2,
       h3,
-      .display {
-        font-family: "Instrument Serif", Georgia, serif;
-        font-weight: 400;
-        letter-spacing: 0;
+      p {
+        margin-top: 0;
       }
 
       h1 {
-        font-size: clamp(4.8rem, 12vw, 10.6rem);
+        font-size: clamp(5.1rem, 10.4vw, 10.8rem);
+        font-weight: 900;
         line-height: 0.78;
-        margin: 0 0 24px;
+        margin-bottom: 18px;
+        max-width: 720px;
       }
 
-      .hero-statement {
-        border-left: 1px solid rgba(255, 250, 241, 0.35);
-        color: rgba(255, 250, 241, 0.86);
-        font-size: clamp(1rem, 1.55vw, 1.26rem);
-        line-height: 1.45;
-        max-width: 520px;
-        padding-left: 22px;
+      .hero-copy p {
+        font-size: clamp(1rem, 1.35vw, 1.2rem);
+        font-weight: 600;
+        line-height: 1.35;
+        margin-bottom: 22px;
+        max-width: 540px;
       }
 
-      .actions {
+      .hero-badge {
         align-items: center;
+        color: var(--muted);
+        display: grid;
+        font-size: 0.68rem;
+        font-weight: 800;
+        height: 120px;
+        justify-items: center;
+        letter-spacing: 0.1em;
+        position: absolute;
+        right: 4%;
+        text-align: center;
+        text-transform: uppercase;
+        top: 26%;
+        width: 120px;
+      }
+
+      .hero-badge::before {
+        border: 1px dashed rgba(7, 7, 7, 0.38);
+        border-radius: 999px;
+        content: "";
+        inset: 0;
+        position: absolute;
+      }
+
+      .hero-badge strong {
+        color: var(--amber-deep);
+        font-size: 2.1rem;
+        line-height: 0.7;
+      }
+
+      .hero-actions {
         display: flex;
         flex-wrap: wrap;
         gap: 14px;
-        margin-top: 28px;
       }
 
-      .button {
+      .hero-visual {
+        background: var(--amber);
+        border-radius: 54px;
+        min-height: 560px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .hero-visual img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        width: 100%;
+      }
+
+      .float-pill {
         align-items: center;
-        border: 1px solid transparent;
+        background: var(--card);
+        border: 1px solid var(--line);
         border-radius: 999px;
-        cursor: pointer;
-        display: inline-flex;
+        bottom: 52px;
+        display: flex;
+        gap: 8px;
+        left: -38px;
+        padding: 10px;
+        position: absolute;
+        box-shadow: var(--shadow);
+      }
+
+      .avatar {
+        background: var(--cream);
+        border: 2px solid var(--card);
+        border-radius: 999px;
+        height: 42px;
+        margin-left: -11px;
+        width: 42px;
+      }
+
+      .avatar:first-child {
+        margin-left: 0;
+      }
+
+      .avatar:nth-child(2) {
+        background: #d4b48d;
+      }
+
+      .avatar:nth-child(3) {
+        background: #96765a;
+      }
+
+      .avatar:nth-child(4) {
+        background: #292929;
+      }
+
+      .count {
+        align-items: center;
+        background: var(--ink);
+        border-radius: 999px;
+        color: var(--card);
+        display: grid;
+        font-size: 0.85rem;
+        font-weight: 900;
+        height: 50px;
+        place-items: center;
+        width: 50px;
+      }
+
+      .orb-stack {
+        display: grid;
+        gap: 14px;
+        position: absolute;
+        right: -32px;
+        top: 58px;
+      }
+
+      .orb {
+        align-items: center;
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        box-shadow: var(--shadow);
+        display: grid;
+        font-size: 1.7rem;
+        font-weight: 800;
+        height: 72px;
+        place-items: center;
+        width: 72px;
+      }
+
+      .orb.dark {
+        background: var(--ink);
+        color: var(--card);
+      }
+
+      .stats {
+        background: rgba(255, 253, 247, 0.86);
+        border: 1px solid var(--line);
+        border-radius: 22px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        margin: 18px 0 16px;
+        overflow: hidden;
+      }
+
+      .stat {
+        align-items: center;
+        display: flex;
+        gap: 18px;
+        min-height: 84px;
+        padding: 16px clamp(18px, 3vw, 42px);
+      }
+
+      .stat + .stat {
+        border-left: 1px solid var(--line);
+      }
+
+      .stat-icon,
+      .feature-icon {
+        align-items: center;
+        background: var(--amber);
+        border-radius: 999px;
+        display: grid;
+        flex: 0 0 auto;
+        font-size: 1.3rem;
+        height: 46px;
+        place-items: center;
+        width: 46px;
+      }
+
+      .stat strong {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1;
+      }
+
+      .stat span {
+        color: var(--muted);
+        display: block;
+        font-size: 0.88rem;
         font-weight: 700;
-        gap: 10px;
-        justify-content: center;
-        min-height: 48px;
-        padding: 13px 20px;
-        transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
       }
 
-      .button:hover {
-        transform: translateY(-2px);
+      .about {
+        background: var(--ink);
+        border-radius: 24px;
+        color: var(--card);
+        min-height: 286px;
+        overflow: hidden;
+        position: relative;
       }
 
-      .button-primary {
-        background: var(--bone);
-        color: var(--wine);
+      .about img {
+        height: 100%;
+        inset: 0;
+        object-fit: cover;
+        object-position: center;
+        opacity: 0.72;
+        position: absolute;
+        width: 100%;
       }
 
-      .button-secondary {
-        border-color: rgba(255, 250, 241, 0.42);
-        color: var(--bone);
+      .about-content {
+        max-width: 420px;
+        padding: clamp(34px, 5vw, 58px);
+        position: relative;
+        z-index: 1;
+      }
+
+      .about-content .eyebrow {
+        color: var(--amber);
+        margin-bottom: 14px;
+      }
+
+      .about h2 {
+        font-size: clamp(2.35rem, 4.4vw, 4.7rem);
+        font-weight: 900;
+        line-height: 0.92;
+        margin-bottom: 18px;
+      }
+
+      .about p {
+        color: rgba(255, 253, 247, 0.82);
+        line-height: 1.45;
+        margin-bottom: 20px;
+      }
+
+      .button-outline-dark {
+        border-color: rgba(255, 253, 247, 0.72);
+        color: var(--card);
       }
 
       section {
-        padding: clamp(76px, 11vw, 140px) clamp(20px, 5vw, 72px);
+        padding: 44px 4px 0;
       }
 
-      .section-kicker {
-        color: var(--clay);
-        display: block;
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-        margin-bottom: 16px;
-        text-transform: uppercase;
+      .section-head {
+        align-items: end;
+        display: flex;
+        gap: 22px;
+        justify-content: space-between;
+        margin-bottom: 28px;
       }
 
-      .section-heading {
-        font-size: clamp(3rem, 7vw, 7.8rem);
-        line-height: 0.88;
+      .section-head h2 {
+        font-size: clamp(2rem, 3.5vw, 3.8rem);
+        font-weight: 900;
+        line-height: 0.96;
         margin: 0;
-        max-width: 1030px;
+        max-width: 520px;
       }
 
-      .section-intro {
+      .section-head p {
         color: var(--muted);
-        font-size: clamp(1.02rem, 1.8vw, 1.28rem);
-        line-height: 1.55;
-        margin: 24px 0 0;
-        max-width: 640px;
-      }
-
-      .bento {
-        display: grid;
-        gap: 14px;
-        grid-template-columns: repeat(12, 1fr);
-        margin-top: clamp(34px, 6vw, 70px);
-      }
-
-      .tile {
-        background: var(--bone);
-        border: 1px solid var(--line);
-        min-height: 248px;
-        overflow: hidden;
-        padding: clamp(22px, 3vw, 34px);
-        position: relative;
-        transition: transform 200ms ease, box-shadow 200ms ease;
-      }
-
-      .tile:hover {
-        box-shadow: var(--shadow);
-        transform: translateY(-4px);
-      }
-
-      .tile-large {
-        grid-column: span 7;
-        min-height: 390px;
-      }
-
-      .tile-medium {
-        grid-column: span 5;
-        min-height: 390px;
-      }
-
-      .tile-small {
-        grid-column: span 4;
-      }
-
-      .tile-number {
-        color: var(--clay);
-        font-size: 0.78rem;
-        font-weight: 800;
-        letter-spacing: 0.14em;
-      }
-
-      .tile h3 {
-        font-size: clamp(2rem, 3vw, 3.4rem);
-        line-height: 0.95;
-        margin: 42px 0 16px;
-      }
-
-      .tile p {
-        color: var(--muted);
-        line-height: 1.55;
+        font-weight: 600;
+        line-height: 1.45;
         margin: 0;
-        max-width: 430px;
+        max-width: 470px;
       }
 
-      .layout-sample {
-        bottom: 34px;
+      .features {
         display: grid;
-        gap: 9px;
-        grid-template-columns: 1.4fr 0.8fr 0.9fr;
-        left: 34px;
-        position: absolute;
-        right: 34px;
+        gap: 26px;
+        grid-template-columns: 1.2fr repeat(6, 1fr);
+        padding-top: 28px;
       }
 
-      .layout-sample span {
-        background: var(--ink);
-        display: block;
-        min-height: 76px;
-      }
-
-      .layout-sample span:nth-child(2) {
-        background: var(--clay);
-        min-height: 86px;
-        transform: translateY(16px);
-      }
-
-      .layout-sample span:nth-child(3) {
-        background: var(--olive);
-        min-height: 128px;
-      }
-
-      .situations {
-        background: var(--ink);
-        color: var(--bone);
-      }
-
-      .situations .section-kicker,
-      .situations .section-intro {
-        color: rgba(255, 250, 241, 0.72);
-      }
-
-      .situation-list {
-        border-top: 1px solid var(--soft-line);
-        margin-top: clamp(38px, 6vw, 72px);
-      }
-
-      .situation-item {
-        align-items: baseline;
-        border-bottom: 1px solid var(--soft-line);
-        display: grid;
-        gap: 24px;
-        grid-template-columns: minmax(180px, 0.7fr) minmax(0, 1.3fr);
-        padding: 28px 0;
-      }
-
-      .situation-item span {
-        color: var(--clay);
-        font-size: 0.78rem;
+      .features h2 {
+        font-size: clamp(1.7rem, 2.4vw, 2.45rem);
         font-weight: 800;
-        letter-spacing: 0.14em;
-        text-transform: uppercase;
-      }
-
-      .situation-item p {
-        font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(1.8rem, 3.4vw, 3.5rem);
         line-height: 1;
         margin: 0;
       }
 
+      .mini-feature {
+        text-align: center;
+      }
+
+      .feature-icon {
+        background: #f2eadc;
+        margin: 0 auto 12px;
+      }
+
+      .mini-feature h3 {
+        font-size: 0.95rem;
+        margin-bottom: 8px;
+      }
+
+      .mini-feature p {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+        line-height: 1.35;
+        margin: 0;
+      }
+
       .comparison {
-        background: var(--paper-deep);
-      }
-
-      .compare-grid {
-        display: grid;
-        gap: 18px;
-        grid-template-columns: 1fr 1fr;
-        margin-top: clamp(36px, 6vw, 76px);
-      }
-
-      .compare-panel {
-        background: var(--bone);
+        align-items: center;
+        background: rgba(255, 253, 247, 0.78);
         border: 1px solid var(--line);
+        border-radius: 22px;
         display: grid;
-        gap: 18px;
-        padding: clamp(14px, 2vw, 22px);
+        grid-template-columns: 1fr auto 1fr;
+        margin-top: 42px;
+        overflow: hidden;
       }
 
-      .compare-panel.bad {
-        background: #ddd3c5;
+      .compare-side {
+        align-items: center;
+        display: grid;
+        gap: 28px;
+        grid-template-columns: 0.46fr 1fr;
+        min-height: 160px;
+        padding: 28px 36px;
       }
 
-      .compare-panel.good {
-        background: var(--wine);
-        color: var(--bone);
+      .compare-visual {
+        align-items: center;
+        background: #eee9df;
+        border-radius: 12px;
+        color: rgba(7, 7, 7, 0.52);
+        display: grid;
+        font-size: 4rem;
+        height: 112px;
+        place-items: center;
       }
 
-      .compare-panel h3 {
-        font-size: clamp(2rem, 3.6vw, 4rem);
-        line-height: 0.9;
-        margin: 0;
-        padding: clamp(10px, 1.4vw, 18px) clamp(8px, 1vw, 14px) 0;
+      .compare-side.good .compare-visual {
+        background: #f3d897;
+        color: #8f6416;
       }
 
-      .compare-image {
-        aspect-ratio: 16 / 10;
-        background: rgba(23, 19, 15, 0.06);
-        border: 1px solid rgba(23, 19, 15, 0.12);
-        display: block;
-        height: auto;
-        object-fit: cover;
-        width: 100%;
-      }
-
-      .compare-panel.good .compare-image {
-        border-color: rgba(255, 250, 241, 0.22);
-      }
-
-      .compare-caption {
-        color: rgba(23, 19, 15, 0.62);
-        font-size: 0.82rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        margin: 0;
-        padding: 0 clamp(8px, 1vw, 14px) clamp(10px, 1.4vw, 18px);
+      .compare-side h3 {
+        font-size: 1.05rem;
+        font-weight: 900;
+        margin-bottom: 12px;
         text-transform: uppercase;
       }
 
-      .compare-panel.good .compare-caption {
-        color: rgba(255, 250, 241, 0.68);
-      }
-
-      .testimonials {
-        background: var(--bone);
-      }
-
-      .quote-grid {
+      .compare-side ul {
+        color: var(--muted);
         display: grid;
-        gap: 18px;
-        grid-template-columns: 1.25fr 0.75fr;
-        margin-top: clamp(36px, 6vw, 72px);
-      }
-
-      blockquote {
-        border-left: 1px solid var(--line);
+        font-size: 0.9rem;
+        font-weight: 600;
+        gap: 7px;
+        list-style: none;
         margin: 0;
-        padding-left: clamp(22px, 3vw, 38px);
+        padding: 0;
       }
 
-      blockquote p {
+      .compare-side li::before {
+        content: "x";
+        display: inline-block;
+        font-weight: 900;
+        margin-right: 10px;
+      }
+
+      .compare-side.good li::before {
+        color: var(--amber-deep);
+        content: "✓";
+      }
+
+      .versus {
+        align-items: center;
+        background: var(--amber);
+        border-radius: 999px;
+        display: grid;
+        font-size: 1.45rem;
+        font-weight: 900;
+        height: 72px;
+        place-items: center;
+        width: 72px;
+        z-index: 1;
+      }
+
+      .social-proof {
+        display: grid;
+        gap: 26px;
+        grid-template-columns: 0.9fr 1.4fr;
+        padding-top: 22px;
+      }
+
+      .testimonials h2 {
+        font-size: clamp(1.7rem, 2.4vw, 2.6rem);
+        font-weight: 800;
+        line-height: 1.05;
+        margin-bottom: 18px;
+      }
+
+      .quote {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        margin-bottom: 14px;
+        padding: 24px;
+      }
+
+      .quote-mark {
+        color: var(--amber);
         font-family: "Instrument Serif", Georgia, serif;
-        font-size: clamp(2.15rem, 4.2vw, 5rem);
-        line-height: 0.98;
-        margin: 0;
+        font-size: 3rem;
+        line-height: 0.6;
       }
 
-      blockquote footer {
+      .quote p {
         color: var(--muted);
-        margin-top: 24px;
+        font-weight: 600;
+        line-height: 1.45;
       }
 
-      .mini-quotes {
-        display: grid;
-        gap: 18px;
+      .quote strong {
+        display: block;
       }
 
-      .mini-quote {
-        border-top: 1px solid var(--line);
-        padding-top: 20px;
-      }
-
-      .mini-quote p {
+      .quote span {
         color: var(--muted);
-        line-height: 1.5;
-        margin: 0 0 16px;
-      }
-
-      .mini-quote strong {
-        color: var(--ink);
-      }
-
-      .pricing {
-        background: var(--paper);
+        display: block;
+        font-size: 0.82rem;
+        font-weight: 700;
       }
 
       .pricing-grid {
         display: grid;
         gap: 18px;
         grid-template-columns: repeat(3, 1fr);
-        margin-top: clamp(36px, 6vw, 72px);
       }
 
       .price-card {
-        background: var(--bone);
+        background: var(--card);
         border: 1px solid var(--line);
+        border-radius: 18px;
         display: flex;
         flex-direction: column;
-        min-height: 480px;
-        padding: clamp(24px, 3vw, 36px);
+        min-height: 360px;
+        padding: 28px;
+        text-align: center;
       }
 
       .price-card.featured {
-        background: var(--olive);
-        color: var(--bone);
+        border-color: var(--amber-deep);
+        box-shadow: 0 0 0 5px rgba(237, 174, 44, 0.12);
+        position: relative;
+      }
+
+      .popular {
+        background: var(--amber);
+        border-radius: 16px 16px 0 0;
+        font-size: 0.72rem;
+        font-weight: 900;
+        left: -1px;
+        letter-spacing: 0.14em;
+        padding: 9px;
+        position: absolute;
+        right: -1px;
+        text-transform: uppercase;
+        top: -1px;
       }
 
       .price-card h3 {
-        font-size: clamp(2.2rem, 3.5vw, 3.6rem);
-        line-height: 0.9;
-        margin: 0;
+        font-size: 0.84rem;
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        margin: 18px 0 8px;
+        text-transform: uppercase;
+      }
+
+      .price-card.featured h3 {
+        margin-top: 38px;
       }
 
       .price {
-        font-size: 0.95rem;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        margin: 18px 0 28px;
-        text-transform: uppercase;
+        font-size: 2rem;
+        font-weight: 900;
+        margin-bottom: 10px;
       }
 
       .price-card p {
         color: var(--muted);
-        line-height: 1.5;
-        margin: 0 0 28px;
-      }
-
-      .price-card.featured p {
-        color: rgba(255, 250, 241, 0.78);
+        font-size: 0.88rem;
+        font-weight: 600;
+        line-height: 1.42;
+        margin-bottom: 18px;
       }
 
       .price-card ul {
         display: grid;
-        gap: 14px;
+        gap: 8px;
         list-style: none;
-        margin: auto 0 0;
+        margin: 0 0 22px;
         padding: 0;
+        text-align: left;
       }
 
       .price-card li {
-        border-top: 1px solid var(--line);
-        padding-top: 14px;
-      }
-
-      .price-card.featured li {
-        border-color: rgba(255, 250, 241, 0.18);
-      }
-
-      .order {
-        background: var(--wine);
-        color: var(--bone);
-      }
-
-      .order-layout {
-        display: grid;
-        gap: clamp(36px, 7vw, 90px);
-        grid-template-columns: minmax(0, 0.9fr) minmax(360px, 0.72fr);
-      }
-
-      .order .section-kicker,
-      .order .section-intro {
-        color: rgba(255, 250, 241, 0.72);
-      }
-
-      .order-form {
-        background: var(--bone);
-        color: var(--ink);
-        padding: clamp(24px, 4vw, 42px);
-      }
-
-      .form-row {
-        display: grid;
-        gap: 16px;
-        grid-template-columns: 1fr 1fr;
-      }
-
-      label {
         color: var(--muted);
-        display: grid;
-        font-size: 0.78rem;
-        font-weight: 800;
-        gap: 8px;
-        letter-spacing: 0.1em;
-        margin-bottom: 18px;
-        text-transform: uppercase;
+        font-size: 0.88rem;
+        font-weight: 700;
       }
 
-      input,
-      select,
-      textarea {
-        background: transparent;
-        border: 0;
-        border-bottom: 1px solid var(--line);
-        color: var(--ink);
-        min-height: 46px;
-        outline: none;
-        padding: 9px 0;
+      .price-card li::before {
+        color: var(--amber-deep);
+        content: "✓";
+        font-weight: 900;
+        margin-right: 9px;
       }
 
-      textarea {
-        min-height: 106px;
-        resize: vertical;
-      }
-
-      input:focus,
-      select:focus,
-      textarea:focus {
-        border-bottom-color: var(--wine);
-      }
-
-      .form-note {
-        color: var(--muted);
-        font-size: 0.86rem;
-        line-height: 1.45;
-        margin: 16px 0 0;
-      }
-
-      .form-button {
-        background: var(--wine);
-        color: var(--bone);
-        margin-top: 10px;
+      .price-card .button {
+        margin-top: auto;
         width: 100%;
       }
 
-      .footer {
-        align-items: end;
-        background: var(--ink);
-        color: var(--bone);
+      .cta {
+        align-items: stretch;
+        background: var(--amber);
+        border-radius: 24px;
         display: grid;
-        gap: 34px;
-        grid-template-columns: 1fr auto;
-        padding: 46px clamp(20px, 5vw, 72px);
+        gap: 28px;
+        grid-template-columns: 0.7fr 0.8fr 1.05fr 0.66fr;
+        margin-top: 36px;
+        overflow: hidden;
+        padding: 0;
       }
 
-      .footer .display {
-        font-size: clamp(3rem, 8vw, 8rem);
-        line-height: 0.8;
+      .cta-photo {
+        background:
+          linear-gradient(rgba(237, 174, 44, 0.18), rgba(237, 174, 44, 0.18)),
+          url("assets/hero-background.png") center / cover;
+        min-height: 230px;
       }
 
-      .footer-links {
-        color: rgba(255, 250, 241, 0.7);
+      .cta-copy {
+        align-self: center;
+        padding: 34px 0;
+      }
+
+      .cta h2 {
+        font-size: clamp(2rem, 3vw, 3.4rem);
+        font-weight: 900;
+        line-height: 0.96;
+        margin-bottom: 14px;
+      }
+
+      .cta p {
+        font-weight: 700;
+        line-height: 1.35;
+        margin: 0;
+        max-width: 380px;
+      }
+
+      .order-form {
+        align-self: center;
+        display: grid;
+        gap: 10px;
+        padding: 34px 34px 34px 0;
+      }
+
+      .form-grid {
+        display: grid;
+        gap: 10px;
+        grid-template-columns: 1fr 1fr;
+      }
+
+      input,
+      textarea {
+        background: var(--card);
+        border: 1px solid rgba(7, 7, 7, 0.24);
+        border-radius: 6px;
+        min-height: 42px;
+        outline: none;
+        padding: 11px 13px;
+        width: 100%;
+      }
+
+      textarea {
+        min-height: 74px;
+        resize: vertical;
+      }
+
+      .form-notes {
+        align-self: center;
+        display: grid;
+        gap: 20px;
+        font-size: 0.88rem;
+        font-weight: 800;
+        line-height: 1.3;
+        padding: 34px 32px 34px 0;
+      }
+
+      .form-notes span {
+        display: block;
+        font-weight: 500;
+      }
+
+      .footer {
+        align-items: center;
+        color: var(--muted);
         display: flex;
-        flex-wrap: wrap;
-        gap: 18px;
-        justify-content: flex-end;
+        font-size: 0.9rem;
+        font-weight: 700;
+        justify-content: space-between;
+        padding: 28px 4px 0;
       }
 
       .reveal {
         opacity: 0;
-        transform: translateY(26px);
-        transition: opacity 700ms ease, transform 700ms ease;
+        transform: translateY(18px);
+        transition: opacity 650ms ease, transform 650ms ease;
       }
 
       .reveal.is-visible {
@@ -673,388 +805,362 @@
         transform: translateY(0);
       }
 
-      @media (max-width: 920px) {
-        .nav-links a:not(.nav-cta) {
+      @media (max-width: 1060px) {
+        .nav {
+          grid-template-columns: 1fr auto;
+        }
+
+        .nav-links {
           display: none;
         }
 
-        .order-layout,
-        .quote-grid,
-        .compare-grid,
-        .pricing-grid {
+        .hero,
+        .social-proof,
+        .cta {
           grid-template-columns: 1fr;
         }
 
-        .hero-inner {
-          padding-top: 104px;
+        .hero-badge {
+          display: none;
         }
 
-        .tile-large,
-        .tile-medium,
-        .tile-small {
+        .hero-visual {
+          min-height: 430px;
+        }
+
+        .stats,
+        .features,
+        .pricing-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .features h2 {
           grid-column: 1 / -1;
         }
 
-        .pricing-grid {
-          gap: 14px;
-        }
-
-        .footer {
+        .comparison {
           grid-template-columns: 1fr;
         }
 
-        .footer-links {
-          justify-content: flex-start;
-        }
-      }
-
-      @media (max-width: 640px) {
-        .nav {
-          padding: 18px 18px;
+        .versus {
+          justify-self: center;
+          margin: -18px 0;
         }
 
-        .brand-name {
-          color: transparent;
-          font-size: 0;
-        }
-
-        .nav-cta {
-          padding: 10px 13px;
-        }
-
-        .hero-inner {
-          min-height: 590px;
-          padding: 96px 18px 36px;
-        }
-
-        .hero {
-          min-height: 590px;
-        }
-
-        .hero::before {
-          background-position: 68% center;
-        }
-
-        .hero::after {
-          background:
-            linear-gradient(90deg, rgba(18, 12, 10, 0.94) 0%, rgba(32, 14, 12, 0.82) 58%, rgba(32, 14, 12, 0.36) 100%),
-            linear-gradient(0deg, rgba(18, 12, 10, 0.34), rgba(18, 12, 10, 0) 40%);
-        }
-
-        h1 {
-          font-size: clamp(4.4rem, 22vw, 7rem);
-        }
-
-        .hero-statement {
-          padding-left: 16px;
-        }
-
-        section {
-          padding-left: 18px;
-          padding-right: 18px;
-        }
-
-        .situation-item,
-        .form-row {
-          grid-template-columns: 1fr;
-        }
-
-        .layout-sample {
+        .cta-photo {
           display: none;
         }
 
-        .tile {
-          min-height: auto;
+        .cta-copy,
+        .order-form,
+        .form-notes {
+          padding: 28px;
+        }
+      }
+
+      @media (max-width: 680px) {
+        .page {
+          padding: 18px 14px 30px;
         }
 
-        .tile h3 {
-          margin-top: 38px;
+        .brand {
+          font-size: 1.8rem;
+        }
+
+        .nav-action .button {
+          min-height: 42px;
+          padding: 10px 14px;
+        }
+
+        h1 {
+          font-size: clamp(4rem, 21vw, 6.5rem);
+        }
+
+        .hero-visual {
+          border-radius: 28px;
+          min-height: 320px;
+        }
+
+        .float-pill,
+        .orb-stack {
+          display: none;
+        }
+
+        .stats,
+        .features,
+        .pricing-grid,
+        .form-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .stat + .stat {
+          border-left: 0;
+          border-top: 1px solid var(--line);
+        }
+
+        .about {
+          border-radius: 20px;
+        }
+
+        .section-head {
+          align-items: start;
+          flex-direction: column;
+        }
+
+        .compare-side {
+          grid-template-columns: 1fr;
+          padding: 24px;
+        }
+
+        .footer {
+          align-items: flex-start;
+          flex-direction: column;
+          gap: 10px;
         }
       }
     </style>
   </head>
   <body>
-    <div class="site-shell">
-      <header class="nav" aria-label="Main navigation">
-        <a class="brand" href="#top" aria-label="NoBiggie home">
-          <span class="brand-mark">N</span>
-          <span class="brand-name">NoBiggie</span>
-        </a>
-        <nav class="nav-links">
-          <a href="#features">Features</a>
-          <a href="#compare">Approach</a>
+    <div class="page">
+      <header class="nav">
+        <a class="brand" href="#top" aria-label="NoBiggie home">No<span>Biggie</span></a>
+        <nav class="nav-links" aria-label="Main navigation">
+          <a href="#top">Home</a>
+          <a href="#process">Process</a>
+          <a href="#examples">Examples</a>
           <a href="#pricing">Pricing</a>
-          <a class="nav-cta" href="#order">Order a refresh</a>
+          <a href="#about">About</a>
+          <a href="#contact">Contact</a>
         </nav>
+        <div class="nav-action">
+          <a class="button button-amber" href="#contact">Start Your Refresh &rarr;</a>
+        </div>
       </header>
 
       <main id="top">
         <section class="hero" aria-labelledby="hero-title">
-          <div class="hero-inner">
-            <div class="hero-copy reveal">
-              <span class="eyebrow">Everyone deserves to be seen.</span>
-              <h1 id="hero-title">NoBiggie</h1>
-              <p class="hero-statement">
-                Editorial web refreshes for small businesses that need to look current,
-                credible, and worth choosing without paying studio retainers.
-              </p>
-              <div class="actions">
-                <a class="button button-primary" href="#order">Order your refresh</a>
-                <a class="button button-secondary" href="#compare">See the difference</a>
-              </div>
+          <div class="hero-copy reveal">
+            <span class="eyebrow">Professional website refreshes for small businesses</span>
+            <h1 id="hero-title">refresh visual poetry</h1>
+            <p>
+              We turn outdated websites into modern, mobile-friendly experiences
+              that build trust, look incredible, and help you win more customers.
+            </p>
+            <div class="hero-badge" aria-hidden="true">
+              Modern mobile magic conversion
+              <strong>*</strong>
+            </div>
+            <div class="hero-actions">
+              <a class="button button-amber" href="#contact">Start Your Refresh &rarr;</a>
+              <a class="button button-light" href="#process">See How It Works &#9655;</a>
+            </div>
+          </div>
+
+          <div class="hero-visual reveal" aria-label="Laptop showing a refreshed small business website">
+            <img src="assets/site-laptop-mockup.png" alt="Laptop displaying a refined small business website design on a warm amber background." />
+            <div class="float-pill" aria-hidden="true">
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="avatar"></span>
+              <span class="count">200+</span>
+            </div>
+            <div class="orb-stack" aria-hidden="true">
+              <span class="orb dark">◎</span>
+              <span class="orb">↗</span>
+              <span class="orb">*</span>
             </div>
           </div>
         </section>
 
-        <section id="features" class="features">
-          <span class="section-kicker reveal">What you get</span>
-          <h2 class="section-heading reveal">A sharper website without the studio invoice.</h2>
-          <p class="section-intro reveal">
-            We keep the scope practical: clarify the offer, redesign the key pages,
-            and hand over a polished direction your customers can trust.
-          </p>
+        <div class="stats reveal" aria-label="NoBiggie results">
+          <div class="stat">
+            <span class="stat-icon">◎</span>
+            <div><strong>200+</strong><span>Websites Refreshed</span></div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon">♡</span>
+            <div><strong>4.9/5</strong><span>Client Satisfaction</span></div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon">◷</span>
+            <div><strong>10-14 Days</strong><span>Typical Turnaround</span></div>
+          </div>
+          <div class="stat">
+            <span class="stat-icon">▯</span>
+            <div><strong>100%</strong><span>Mobile Friendly</span></div>
+          </div>
+        </div>
 
-          <div class="bento">
-            <article class="tile tile-large reveal">
-              <span class="tile-number">01</span>
-              <h3>Creative layout direction</h3>
-              <p>
-                We replace generic blocks with editorial composition, strong spacing,
-                and a page flow that feels specific to your business.
-              </p>
-              <div class="layout-sample" aria-hidden="true">
-                <span></span>
-                <span></span>
-                <span></span>
-              </div>
-            </article>
-            <article class="tile tile-medium reveal">
-              <span class="tile-number">02</span>
-              <h3>Copy that says what matters</h3>
-              <p>
-                Your site should explain who you help, why people choose you, and
-                how to take the next step in plain language.
-              </p>
-            </article>
-            <article class="tile tile-small reveal">
-              <span class="tile-number">03</span>
-              <h3>Mobile polish</h3>
-              <p>Tap targets, sections, forms, and image crops are shaped for phone-first buyers.</p>
-            </article>
-            <article class="tile tile-small reveal">
-              <span class="tile-number">04</span>
-              <h3>Practical assets</h3>
-              <p>Homepage design, section copy, color system, type direction, and build-ready notes.</p>
-            </article>
-            <article class="tile tile-small reveal">
-              <span class="tile-number">05</span>
-              <h3>Fast handoff</h3>
-              <p>Most refreshes are scoped for days, not months, with clear decisions at every step.</p>
-            </article>
+        <section id="about" class="about reveal">
+          <img src="assets/about-editorial-banner.png" alt="Black and white editorial portrait with bold cream graphic shapes." />
+          <div class="about-content">
+            <span class="eyebrow">About NoBiggie</span>
+            <h2>Modern sites. Bigger impact.</h2>
+            <p>
+              We combine clean design, smart strategy, and performance best
+              practices to create websites that look premium and drive real results.
+            </p>
+            <a class="button button-outline-dark" href="#process">Our Process &rarr;</a>
           </div>
         </section>
 
-        <section class="situations">
-          <span class="section-kicker reveal">When design starts costing you</span>
-          <h2 class="section-heading reveal">People judge the business before they call.</h2>
-          <p class="section-intro reveal">
-            A better interface is not decoration. It lowers doubt, makes offers easier
-            to understand, and helps good local businesses win the first impression.
-          </p>
-
-          <div class="situation-list">
-            <div class="situation-item reveal">
-              <span>Outdated first impression</span>
-              <p>Your referrals search for you and the site makes the business feel inactive.</p>
-            </div>
-            <div class="situation-item reveal">
-              <span>Hard to choose</span>
-              <p>Customers like the service, but cannot quickly see prices, process, or next steps.</p>
-            </div>
-            <div class="situation-item reveal">
-              <span>Mobile friction</span>
-              <p>Most visitors arrive on phones, then leave because booking feels harder than it should.</p>
-            </div>
-            <div class="situation-item reveal">
-              <span>Better competitors</span>
-              <p>A weaker business looks more premium online and captures the client first.</p>
-            </div>
+        <section id="process" class="features reveal">
+          <h2>Everything you need in a website refresh</h2>
+          <div class="mini-feature">
+            <span class="feature-icon">▣</span>
+            <h3>Modern Design</h3>
+            <p>Clear, strategic designs that reflect your brand.</p>
+          </div>
+          <div class="mini-feature">
+            <span class="feature-icon">▯</span>
+            <h3>Mobile First</h3>
+            <p>Fully responsive and optimized for every device.</p>
+          </div>
+          <div class="mini-feature">
+            <span class="feature-icon">⌁</span>
+            <h3>Performance</h3>
+            <p>Fast-loading pages that support SEO and UX.</p>
+          </div>
+          <div class="mini-feature">
+            <span class="feature-icon">⌕</span>
+            <h3>SEO Ready</h3>
+            <p>Built with best practices customers can find.</p>
+          </div>
+          <div class="mini-feature">
+            <span class="feature-icon">✎</span>
+            <h3>Easy to Update</h3>
+            <p>Simple systems you can maintain with confidence.</p>
+          </div>
+          <div class="mini-feature">
+            <span class="feature-icon">☏</span>
+            <h3>Ongoing Support</h3>
+            <p>We stay nearby after launch when you need help.</p>
           </div>
         </section>
 
-        <section id="compare" class="comparison">
-          <span class="section-kicker reveal">AI is not the strategy</span>
-          <h2 class="section-heading reveal">We use AI for speed, then design like people will notice.</h2>
-
-          <div class="compare-grid">
-            <article class="compare-panel bad reveal">
-              <h3>Regular AI slop websites</h3>
-              <img
-                class="compare-image"
-                src="assets/ai-slop-website.png"
-                alt="A generic AI-generated website mockup with glossy gradients, floating 3D shapes, repeated cards, icons, and stock testimonial blocks."
-                loading="lazy"
-              />
-              <p class="compare-caption">Template energy, interchangeable result</p>
-            </article>
-            <article class="compare-panel good reveal">
-              <h3>NoBiggie creative approach</h3>
-              <img
-                class="compare-image"
-                src="assets/refined-editorial-website.png"
-                alt="A refined editorial small-business website mockup with restrained colors, strong hierarchy, asymmetrical layout, and a premium photographic feature."
-                loading="lazy"
-              />
-              <p class="compare-caption">Editorial rhythm, ownable direction</p>
-            </article>
-          </div>
-        </section>
-
-        <section class="testimonials">
-          <span class="section-kicker reveal">Early reactions</span>
-          <h2 class="section-heading reveal">Small businesses need taste, not theater.</h2>
-
-          <div class="quote-grid">
-            <blockquote class="reveal">
-              <p>
-                “The refresh made us look like the place our regulars already knew we were.”
-              </p>
-              <footer>Rina K., neighborhood bakery owner</footer>
-            </blockquote>
-
-            <div class="mini-quotes">
-              <div class="mini-quote reveal">
-                <p>
-                  “Our old homepage explained everything and convinced nobody.
-                  NoBiggie made the offer obvious.”
-                </p>
-                <strong>Mateo L., mobile repair shop</strong>
-              </div>
-              <div class="mini-quote reveal">
-                <p>
-                  “It finally feels current without pretending we are a giant company.”
-                </p>
-                <strong>Jo S., wellness studio</strong>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section id="pricing" class="pricing">
-          <span class="section-kicker reveal">Pricing</span>
-          <h2 class="section-heading reveal">Choose the refresh your business actually needs.</h2>
-          <p class="section-intro reveal">
-            Straightforward packages for small businesses that need better design now,
-            with room to scale when the site starts working harder.
-          </p>
-
-          <div class="pricing-grid">
-            <article class="price-card reveal">
-              <h3>Audit</h3>
-              <div class="price">From $290</div>
-              <p>A direct review of what is hurting trust, clarity, and conversion.</p>
-              <ul>
-                <li>Homepage teardown</li>
-                <li>Mobile friction notes</li>
-                <li>Priority fixes checklist</li>
-                <li>Color and type direction</li>
-              </ul>
-            </article>
-            <article class="price-card featured reveal">
-              <h3>Refresh</h3>
-              <div class="price">From $890</div>
-              <p>A new visual direction for the pages customers see before they buy.</p>
-              <ul>
-                <li>Homepage redesign</li>
-                <li>Offer and CTA rewrite</li>
-                <li>Responsive layout concept</li>
-                <li>Build-ready handoff notes</li>
-              </ul>
-            </article>
-            <article class="price-card reveal">
-              <h3>Launch</h3>
-              <div class="price">Custom quote</div>
-              <p>For businesses that want the refresh designed and helped into production.</p>
-              <ul>
-                <li>Multi-page direction</li>
-                <li>Content structure</li>
-                <li>Developer collaboration</li>
-                <li>Post-launch polish pass</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section id="order" class="order">
-          <div class="order-layout">
+        <section id="examples" class="comparison reveal" aria-label="Before and after comparison">
+          <div class="compare-side">
+            <div class="compare-visual" aria-hidden="true">☹</div>
             <div>
-              <span class="section-kicker reveal">Order a refresh</span>
-              <h2 class="section-heading reveal">Send the website. We’ll show you what it could become.</h2>
-              <p class="section-intro reveal">
-                Tell us what you sell, what feels outdated, and what a better website
-                should help people do. We’ll reply with the right scope.
-              </p>
+              <h3>Outdated websites hold you back</h3>
+              <ul>
+                <li>Look unprofessional and outdated</li>
+                <li>Hard to use on phones and tablets</li>
+                <li>Load slowly and lose visitors</li>
+                <li>Do not show up in search results</li>
+                <li>Miss opportunities to convert leads</li>
+              </ul>
             </div>
+          </div>
+          <div class="versus">vs.</div>
+          <div class="compare-side good">
+            <div>
+              <h3>A NoBiggie refresh changes that</h3>
+              <ul>
+                <li>Modern design that builds trust instantly</li>
+                <li>Mobile-friendly on every device</li>
+                <li>Lightning fast for better rankings</li>
+                <li>SEO-ready to get found online</li>
+                <li>Built to turn visitors into customers</li>
+              </ul>
+            </div>
+            <div class="compare-visual" aria-hidden="true">☺</div>
+          </div>
+        </section>
 
-            <form class="order-form reveal" action="mailto:hello@nobiggie.studio" method="post" enctype="text/plain">
-              <div class="form-row">
-                <label>
-                  Name
-                  <input name="name" autocomplete="name" placeholder="Your name" required />
-                </label>
-                <label>
-                  Business
-                  <input name="business" placeholder="Business name" required />
-                </label>
-              </div>
-              <label>
-                Website
-                <input name="website" inputmode="url" placeholder="https://yourwebsite.com" required />
-              </label>
-              <div class="form-row">
-                <label>
-                  Package
-                  <select name="package" required>
-                    <option value="">Choose one</option>
-                    <option>Audit</option>
-                    <option>Refresh</option>
-                    <option>Launch</option>
-                  </select>
-                </label>
-                <label>
-                  Budget
-                  <select name="budget" required>
-                    <option value="">Choose range</option>
-                    <option>Under $500</option>
-                    <option>$500-$1,500</option>
-                    <option>$1,500+</option>
-                  </select>
-                </label>
-              </div>
-              <label>
-                What should change?
-                <textarea name="message" placeholder="The site feels old, customers miss the booking button, we need better mobile..." required></textarea>
-              </label>
-              <button class="button form-button" type="submit">Start the refresh</button>
-              <p class="form-note">
-                This demo form opens an email draft. Replace the address with your inbox or form tool before launch.
+        <section id="pricing" class="social-proof">
+          <div class="testimonials reveal">
+            <h2>What small business owners are saying</h2>
+            <article class="quote">
+              <div class="quote-mark">“</div>
+              <p>
+                NoBiggie made the whole process feel easy. They listened,
+                delivered a site that finally feels like us, and made it simple.
               </p>
-            </form>
+              <strong>Jenna L.</strong>
+              <span>Founder, Olive & Oak Co.</span>
+            </article>
+            <article class="quote">
+              <div class="quote-mark">“</div>
+              <p>
+                Our new site is not only thoughtful. They took our outdated site
+                and turned it into our best marketing tool.
+              </p>
+              <strong>Priya S.</strong>
+              <span>CEO, Bright Path Coaching</span>
+            </article>
+          </div>
+
+          <div class="pricing-grid reveal">
+            <article class="price-card">
+              <h3>Audit</h3>
+              <div class="price">$499</div>
+              <p>A deep-dive review of your current site with a custom roadmap to improve.</p>
+              <ul>
+                <li>Full site audit</li>
+                <li>Actionable recommendations</li>
+                <li>30-min strategy call</li>
+              </ul>
+              <a class="button button-light" href="#contact">Get Started</a>
+            </article>
+
+            <article class="price-card featured">
+              <div class="popular">Most Popular</div>
+              <h3>Refresh</h3>
+              <div class="price">$2,499</div>
+              <p>A complete website refresh that elevates your brand and drives results.</p>
+              <ul>
+                <li>Custom design</li>
+                <li>Mobile-first and SEO-ready</li>
+                <li>Up to 5 pages</li>
+                <li>Launch in 10-14 days</li>
+              </ul>
+              <a class="button button-amber" href="#contact">Start Your Refresh &rarr;</a>
+            </article>
+
+            <article class="price-card">
+              <h3>Launch</h3>
+              <div class="price">$4,499+</div>
+              <p>For businesses that need more custom builds with advanced features.</p>
+              <ul>
+                <li>Everything in Refresh</li>
+                <li>Custom functionality</li>
+                <li>Integrations and tools</li>
+                <li>Priority support</li>
+              </ul>
+              <a class="button button-light" href="#contact">Let's Talk</a>
+            </article>
+          </div>
+        </section>
+
+        <section id="contact" class="cta reveal">
+          <div class="cta-photo" aria-hidden="true"></div>
+          <div class="cta-copy">
+            <h2>Ready for a website that works as hard as you do?</h2>
+            <p>Share a few details and we will be in touch within 1 business day.</p>
+          </div>
+          <form class="order-form" action="mailto:hello@nobiggie.studio" method="post" enctype="text/plain">
+            <div class="form-grid">
+              <input name="name" autocomplete="name" placeholder="Full Name" required />
+              <input name="email" type="email" autocomplete="email" placeholder="Email Address" required />
+              <input name="business" placeholder="Business Name" required />
+              <input name="website" inputmode="url" placeholder="Website URL, if you have one" />
+            </div>
+            <textarea name="message" placeholder="Tell us about your business and what you need." required></textarea>
+            <button class="button button-dark" type="submit">Send My Inquiry &rarr;</button>
+          </form>
+          <div class="form-notes">
+            <p>No pressure.<span>Just a friendly conversation.</span></p>
+            <p>Clear process.<span>No jargon. No surprises.</span></p>
+            <p>Built for small business.<span>That is our specialty.</span></p>
           </div>
         </section>
       </main>
 
       <footer class="footer">
-        <div>
-          <div class="display">NoBiggie</div>
-          <p>Everyone deserves to be seen.</p>
-        </div>
-        <div class="footer-links">
-          <a href="#features">Features</a>
-          <a href="#compare">Approach</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#order">Order</a>
-        </div>
+        <span>NoBiggie. Everyone deserves to be seen.</span>
+        <span>Website refreshes for small businesses.</span>
       </footer>
     </div>
 
