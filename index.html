@@ -152,8 +152,8 @@
 
       .hero {
         display: grid;
-        gap: clamp(28px, 4vw, 54px);
-        grid-template-columns: minmax(0, 0.86fr) minmax(420px, 1.14fr);
+        gap: clamp(28px, 4vw, 48px);
+        grid-template-columns: minmax(0, 0.78fr) minmax(420px, 1.22fr);
         padding: 2px 4px 18px;
       }
 
@@ -180,11 +180,11 @@
       }
 
       h1 {
-        font-size: clamp(5.1rem, 10.4vw, 10.8rem);
+        font-size: clamp(4.5rem, 8.2vw, 8.8rem);
         font-weight: 900;
-        line-height: 0.78;
-        margin-bottom: 18px;
-        max-width: 720px;
+        line-height: 0.82;
+        margin-bottom: 22px;
+        max-width: 660px;
       }
 
       .hero-copy p {
@@ -195,37 +195,6 @@
         max-width: 540px;
       }
 
-      .hero-badge {
-        align-items: center;
-        color: var(--muted);
-        display: grid;
-        font-size: 0.68rem;
-        font-weight: 800;
-        height: 120px;
-        justify-items: center;
-        letter-spacing: 0.1em;
-        position: absolute;
-        right: 4%;
-        text-align: center;
-        text-transform: uppercase;
-        top: 26%;
-        width: 120px;
-      }
-
-      .hero-badge::before {
-        border: 1px dashed rgba(7, 7, 7, 0.38);
-        border-radius: 999px;
-        content: "";
-        inset: 0;
-        position: absolute;
-      }
-
-      .hero-badge strong {
-        color: var(--amber-deep);
-        font-size: 2.1rem;
-        line-height: 0.7;
-      }
-
       .hero-actions {
         display: flex;
         flex-wrap: wrap;
@@ -233,97 +202,20 @@
       }
 
       .hero-visual {
+        align-items: center;
         background: var(--amber);
         border-radius: 54px;
-        min-height: 560px;
+        display: flex;
+        min-height: clamp(430px, 42vw, 560px);
         overflow: hidden;
         position: relative;
       }
 
       .hero-visual img {
-        height: 100%;
-        object-fit: cover;
-        object-position: center;
+        height: auto;
+        object-fit: contain;
+        object-position: center bottom;
         width: 100%;
-      }
-
-      .float-pill {
-        align-items: center;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        bottom: 52px;
-        display: flex;
-        gap: 8px;
-        left: -38px;
-        padding: 10px;
-        position: absolute;
-        box-shadow: var(--shadow);
-      }
-
-      .avatar {
-        background: var(--cream);
-        border: 2px solid var(--card);
-        border-radius: 999px;
-        height: 42px;
-        margin-left: -11px;
-        width: 42px;
-      }
-
-      .avatar:first-child {
-        margin-left: 0;
-      }
-
-      .avatar:nth-child(2) {
-        background: #d4b48d;
-      }
-
-      .avatar:nth-child(3) {
-        background: #96765a;
-      }
-
-      .avatar:nth-child(4) {
-        background: #292929;
-      }
-
-      .count {
-        align-items: center;
-        background: var(--ink);
-        border-radius: 999px;
-        color: var(--card);
-        display: grid;
-        font-size: 0.85rem;
-        font-weight: 900;
-        height: 50px;
-        place-items: center;
-        width: 50px;
-      }
-
-      .orb-stack {
-        display: grid;
-        gap: 14px;
-        position: absolute;
-        right: -32px;
-        top: 58px;
-      }
-
-      .orb {
-        align-items: center;
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 999px;
-        box-shadow: var(--shadow);
-        display: grid;
-        font-size: 1.7rem;
-        font-weight: 800;
-        height: 72px;
-        place-items: center;
-        width: 72px;
-      }
-
-      .orb.dark {
-        background: var(--ink);
-        color: var(--card);
       }
 
       .stats {
@@ -488,69 +380,209 @@
       }
 
       .comparison {
-        align-items: center;
+        align-items: stretch;
         background: rgba(255, 253, 247, 0.78);
         border: 1px solid var(--line);
-        border-radius: 22px;
+        border-radius: 28px;
         display: grid;
+        gap: 0;
         grid-template-columns: 1fr auto 1fr;
         margin-top: 42px;
         overflow: hidden;
       }
 
-      .compare-side {
-        align-items: center;
+      .compare-panel {
+        background: var(--card);
         display: grid;
-        gap: 28px;
-        grid-template-columns: 0.46fr 1fr;
-        min-height: 160px;
-        padding: 28px 36px;
+        gap: 0;
+        grid-template-rows: auto 1fr;
+        min-width: 0;
       }
 
-      .compare-visual {
-        align-items: center;
+      .compare-media {
+        aspect-ratio: 16 / 10;
         background: #eee9df;
-        border-radius: 12px;
-        color: rgba(7, 7, 7, 0.52);
+        border-bottom: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .compare-media img {
+        height: 100%;
+        object-fit: cover;
+        object-position: center top;
+        width: 100%;
+      }
+
+      .compare-copy {
         display: grid;
-        font-size: 4rem;
-        height: 112px;
-        place-items: center;
+        grid-template-rows: auto 1fr;
+        padding: clamp(24px, 3vw, 38px);
       }
 
-      .compare-side.good .compare-visual {
-        background: #f3d897;
-        color: #8f6416;
-      }
-
-      .compare-side h3 {
-        font-size: 1.05rem;
+      .compare-copy h3 {
+        font-size: clamp(1.15rem, 1.5vw, 1.45rem);
         font-weight: 900;
-        margin-bottom: 12px;
+        line-height: 1.05;
+        margin: 0 0 18px;
+        min-height: 3.15em;
         text-transform: uppercase;
       }
 
-      .compare-side ul {
+      .compare-copy ul {
         color: var(--muted);
         display: grid;
-        font-size: 0.9rem;
-        font-weight: 600;
-        gap: 7px;
+        font-size: clamp(0.95rem, 1vw, 1.08rem);
+        font-weight: 800;
+        gap: 12px;
         list-style: none;
         margin: 0;
         padding: 0;
       }
 
-      .compare-side li::before {
-        content: "x";
-        display: inline-block;
-        font-weight: 900;
-        margin-right: 10px;
+      .compare-copy li {
+        align-items: start;
+        display: grid;
+        gap: 12px;
+        grid-template-columns: 18px 1fr;
+        line-height: 1.3;
       }
 
-      .compare-side.good li::before {
+      .compare-copy li::before {
+        color: rgba(7, 7, 7, 0.62);
+        content: "x";
+        font-weight: 900;
+      }
+
+      .compare-panel.good .compare-copy li::before {
         color: var(--amber-deep);
         content: "✓";
+      }
+
+      .nobiggie-mock {
+        background: var(--paper);
+        display: grid;
+        gap: 16px;
+        height: 100%;
+        padding: clamp(18px, 2.4vw, 34px);
+      }
+
+      .mock-nav,
+      .mock-features {
+        align-items: center;
+        display: grid;
+        gap: 16px;
+        grid-template-columns: 1fr 0.6fr 0.6fr 0.6fr auto;
+      }
+
+      .mock-brand {
+        font-size: clamp(1.4rem, 2.1vw, 2.5rem);
+        font-weight: 900;
+      }
+
+      .mock-brand span {
+        color: #a97414;
+      }
+
+      .mock-line {
+        background: var(--ink);
+        border-radius: 999px;
+        height: 8px;
+      }
+
+      .mock-pill {
+        background: var(--amber);
+        border: 1px solid var(--amber-deep);
+        border-radius: 999px;
+        height: 32px;
+        width: 120px;
+      }
+
+      .mock-hero {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 0.86fr 1.14fr;
+        min-height: 230px;
+      }
+
+      .mock-headline {
+        align-content: center;
+        display: grid;
+        gap: 12px;
+      }
+
+      .mock-headline span {
+        background: var(--ink);
+        border-radius: 999px;
+        display: block;
+        height: clamp(24px, 4vw, 52px);
+      }
+
+      .mock-headline span:nth-child(2) {
+        width: 84%;
+      }
+
+      .mock-headline span:nth-child(3) {
+        width: 62%;
+      }
+
+      .mock-photo {
+        background:
+          linear-gradient(130deg, rgba(7, 7, 7, 0.12) 0 42%, transparent 42%),
+          var(--amber);
+        border-radius: 28px;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .mock-photo::before {
+        background: var(--sage);
+        border-radius: 18px;
+        content: "";
+        inset: 22px;
+        position: absolute;
+      }
+
+      .mock-photo::after {
+        background: var(--card);
+        border-radius: 999px;
+        content: "";
+        height: 62px;
+        position: absolute;
+        right: 42px;
+        top: 42px;
+        width: 62px;
+      }
+
+      .mock-features {
+        border-top: 1px solid var(--line);
+        grid-template-columns: repeat(4, 1fr);
+        padding-top: 14px;
+      }
+
+      .mock-feature {
+        display: grid;
+        gap: 8px;
+      }
+
+      .mock-feature::before {
+        background: var(--amber);
+        border-radius: 999px;
+        content: "";
+        height: 28px;
+        width: 28px;
+      }
+
+      .mock-feature span {
+        background: rgba(7, 7, 7, 0.82);
+        border-radius: 999px;
+        display: block;
+        height: 7px;
+        width: 76%;
+      }
+
+      .mock-feature span + span {
+        background: rgba(7, 7, 7, 0.24);
+        width: 58%;
       }
 
       .versus {
@@ -561,6 +593,7 @@
         font-size: 1.45rem;
         font-weight: 900;
         height: 72px;
+        margin: auto -36px;
         place-items: center;
         width: 72px;
         z-index: 1;
@@ -820,10 +853,6 @@
           grid-template-columns: 1fr;
         }
 
-        .hero-badge {
-          display: none;
-        }
-
         .hero-visual {
           min-height: 430px;
         }
@@ -845,6 +874,10 @@
         .versus {
           justify-self: center;
           margin: -18px 0;
+        }
+
+        .compare-copy h3 {
+          min-height: auto;
         }
 
         .cta-photo {
@@ -873,17 +906,12 @@
         }
 
         h1 {
-          font-size: clamp(4rem, 21vw, 6.5rem);
+          font-size: clamp(3.85rem, 18vw, 6rem);
         }
 
         .hero-visual {
           border-radius: 28px;
           min-height: 320px;
-        }
-
-        .float-pill,
-        .orb-stack {
-          display: none;
         }
 
         .stats,
@@ -907,9 +935,33 @@
           flex-direction: column;
         }
 
-        .compare-side {
-          grid-template-columns: 1fr;
+        .compare-copy {
           padding: 24px;
+        }
+
+        .nobiggie-mock {
+          padding: 18px;
+        }
+
+        .mock-nav {
+          grid-template-columns: 1fr auto;
+        }
+
+        .mock-nav .mock-line {
+          display: none;
+        }
+
+        .mock-pill {
+          width: 84px;
+        }
+
+        .mock-hero {
+          grid-template-columns: 1fr;
+          min-height: 260px;
+        }
+
+        .mock-features {
+          grid-template-columns: repeat(2, 1fr);
         }
 
         .footer {
@@ -946,10 +998,6 @@
               We turn outdated websites into modern, mobile-friendly experiences
               that build trust, look incredible, and help you win more customers.
             </p>
-            <div class="hero-badge" aria-hidden="true">
-              Modern mobile magic conversion
-              <strong>*</strong>
-            </div>
             <div class="hero-actions">
               <a class="button button-amber" href="#contact">Start Your Refresh &rarr;</a>
               <a class="button button-light" href="#process">See How It Works &#9655;</a>
@@ -958,18 +1006,6 @@
 
           <div class="hero-visual reveal" aria-label="Laptop showing a refreshed small business website">
             <img src="assets/site-laptop-mockup.png" alt="Laptop displaying a refined small business website design on a warm amber background." />
-            <div class="float-pill" aria-hidden="true">
-              <span class="avatar"></span>
-              <span class="avatar"></span>
-              <span class="avatar"></span>
-              <span class="avatar"></span>
-              <span class="count">200+</span>
-            </div>
-            <div class="orb-stack" aria-hidden="true">
-              <span class="orb dark">◎</span>
-              <span class="orb">↗</span>
-              <span class="orb">*</span>
-            </div>
           </div>
         </section>
 
@@ -1039,34 +1075,60 @@
           </div>
         </section>
 
-        <section id="examples" class="comparison reveal" aria-label="Before and after comparison">
-          <div class="compare-side">
-            <div class="compare-visual" aria-hidden="true">☹</div>
-            <div>
-              <h3>Outdated websites hold you back</h3>
+        <section id="examples" class="comparison reveal" aria-label="AI slop versus NoBiggie comparison">
+          <article class="compare-panel">
+            <div class="compare-media">
+              <img src="assets/ai-slop-website.png" alt="Generic AI-generated website example with glossy gradients, floating 3D objects, repeated cards, icons, and stock testimonial blocks." />
+            </div>
+            <div class="compare-copy">
+              <h3>Regular AI slop websites</h3>
               <ul>
-                <li>Look unprofessional and outdated</li>
-                <li>Hard to use on phones and tablets</li>
-                <li>Load slowly and lose visitors</li>
-                <li>Do not show up in search results</li>
-                <li>Miss opportunities to convert leads</li>
+                <li>Same shiny hero and repeated template sections</li>
+                <li>Vague copy that could belong to any business</li>
+                <li>Too many icons, cards, and decorative effects</li>
+                <li>Looks polished for a second, then feels generic</li>
+                <li>No real hierarchy for trust, booking, or conversion</li>
               </ul>
             </div>
-          </div>
+          </article>
           <div class="versus">vs.</div>
-          <div class="compare-side good">
-            <div>
-              <h3>A NoBiggie refresh changes that</h3>
+          <article class="compare-panel good">
+            <div class="compare-media">
+              <div class="nobiggie-mock" aria-hidden="true">
+                <div class="mock-nav">
+                  <div class="mock-brand">No<span>Biggie</span></div>
+                  <span class="mock-line"></span>
+                  <span class="mock-line"></span>
+                  <span class="mock-line"></span>
+                  <span class="mock-pill"></span>
+                </div>
+                <div class="mock-hero">
+                  <div class="mock-headline">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                  </div>
+                  <div class="mock-photo"></div>
+                </div>
+                <div class="mock-features">
+                  <div class="mock-feature"><span></span><span></span></div>
+                  <div class="mock-feature"><span></span><span></span></div>
+                  <div class="mock-feature"><span></span><span></span></div>
+                  <div class="mock-feature"><span></span><span></span></div>
+                </div>
+              </div>
+            </div>
+            <div class="compare-copy">
+              <h3>NoBiggie creative approach</h3>
               <ul>
-                <li>Modern design that builds trust instantly</li>
-                <li>Mobile-friendly on every device</li>
-                <li>Lightning fast for better rankings</li>
-                <li>SEO-ready to get found online</li>
+                <li>Layout shaped around the business and offer</li>
+                <li>Bold visual system with restrained amber accents</li>
+                <li>Clear sections for proof, services, and next steps</li>
+                <li>Mobile-friendly structure that still feels premium</li>
                 <li>Built to turn visitors into customers</li>
               </ul>
             </div>
-            <div class="compare-visual" aria-hidden="true">☺</div>
-          </div>
+          </article>
         </section>
 
         <section id="pricing" class="social-proof">
